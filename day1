@@ -1,0 +1,34 @@
+History of java - Develop by james Gosling at Sun microsystem in 1995
+Java - It is a high level language an object oriented , Platform independent Programming language
+
+    It is Famous for Write once and  Run Anywhere
+
+
+jvm - (java virtual machine ) 
+    Jvm is an Engine That run Java Program
+    It converts Bytecode  into Machine code
+
+jdk- (Java Development kit)
+    JDK is the full software package You need to develop and run java application
+
+jre- (Java runtime Environment)
+    Jre is the environment needed to run java Program
+
+
+KEY FEATURE OF Java
+simple(easy to learn)
+Object oriented (Everything is an object)
+Platform independent(JVM make it possible)
+Secure (runtime securtiy Feature)
+Robust ( error handling, memory management)
+Multithreaded (supporrt concurrent program,ming)
+
+
+Hello world program
+
+public class JavaHello {
+    public static void main(String[] args) {
+        System.out.println("Hello world");
+    }
+}
+
