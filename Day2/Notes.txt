@@ -1,0 +1,232 @@
+Variable
+A variable is a name given to a memory location to store data.
+
+It must be declared with a data type.
+dataType variableName = value;
+
+Types of Variables
+Local: Declared inside a method.
+
+Instance: Declared inside a class, but outside methods.
+
+Static: Declared with static keyword, shared among all instances.
+
+// Java Program to show the use of local variables
+import java.io.*;
+
+class TEST {
+    public static void main(String[] args)
+    {
+        // Declared a Local Variable
+        int var = 10;
+
+        // This variable is local to this main method only
+        System.out.println("Local Variable: " + var);
+    }
+}
+
+
+// Java Program to show the use of
+// Instance Variables
+import java.io.*;
+
+class TEST {
+
+    // Declared Instance Variable
+    public String first;
+    public int i;
+    public Integer I;
+    public TEST()
+    {
+        // Default Constructor
+        // initializing Instance Variable
+        this.first = "Subodh kumar";
+    }
+
+    // Main Method
+    public static void main(String[] args)
+    {
+        // Object Creation
+        TEST name = new TEST();
+
+        // Displaying O/P
+        System.out.println("first name is: " + name.first);
+        System.out.println("Default value for int is "+ name.i);
+      
+        // toString() called internally
+        System.out.println("Default value for Integer is "+ name.I);
+    }
+}
+
+
+
+
+
+// Java Program to show the use of
+// Static variables
+import java.io.*;
+
+class TEST {
+    // Declared static variable
+    public static String first = "Subodh kumar";
+  
+    public static void main(String[] args)
+    {
+
+        // geek variable can be accessed without object
+        // creation Displaying O/P GFG.geek --> using the
+        // static variable
+        System.out.println("first Name is : " + TEST.first);
+
+        // static int c = 0;
+        // above line, when uncommented,
+        // will throw an error as static variables cannot be
+        // declared locally.
+    }
+}
+
+
+
+
+
+premitive
+Type | Size | Example
+byte | 1 byte | byte a = 10;
+short | 2 byte | short s = 1000;
+int | 4 byte | int x = 12345;
+long | 8 byte | long l = 123456L;
+float | 4 byte | float f = 3.14f;
+double | 8 byte | double d = 6.28;
+char | 2 byte | char c = 'A';
+boolean | 1 bit | boolean b = true;
+
+ Non-Primitive (Reference) Data Types
+Strings, Arrays, Classes, Objects,
+
+
+
+
+
+
+
+
+
+
+
+
+public class DataTypeExample {
+    public static void main(String[] args) {
+        // Primitive data types
+        int age = 25;
+        double salary = 50000.50;
+        char grade = 'A';
+        boolean isEmployed = true;
+
+        // Non-primitive data types
+        String name = "John Doe";
+        int[] scores = {90, 85, 88};
+        Person person = new Person();
+        person.name = name;
+        person.age = age;
+
+        System.out.println("Name: " + person.name);
+        System.out.println("Age: " + person.age);
+        System.out.println("Salary: " + salary);
+        System.out.println("Grade: " + grade);
+        System.out.println("Employed: " + isEmployed);
+    }
+}
+
+class Person {
+    String name;
+    int age;
+}
+
+
+
+Java operators are special symbols that perform operations on variables or values. These operators are essential in programming as they allow you to manipulate data efficiently
+arithmetic, unary, relational, logical,
+
+Types of Operators in Java
+Arithmetic Operators
+Unary Operators
+Assignment Operator
+Relational Operators
+Logical Operators
+Ternary Operator
+Bitwise Operators
+Shift Operators
+instance of operator
+
+Arithmetic Operators
+Arithmetic Operators are used to perform simple arithmetic operations on primitive and non-primitive data types. 
+
+* : Multiplication
+/ : Division
+% : Modulo
++ : Addition
+– : Subtraction
+
+Unary Operators
+Unary Operators need only one operand. They are used to increment, decrement, or negate a value. 
+
+- , Negates the value.
++ , Indicates a positive value (automatically converts byte, char, or short to int).
+++ , Increments by 1.
+Post-Increment: Uses value first, then increments.
+Pre-Increment: Increments first, then uses value.
+-- , Decrements by 1.
+Post-Decrement: Uses value first, then decrements.
+Pre-Decrement: Decrements first, then uses value.
+
+
+Assignment Operator
+ ‘=’ Assignment operator is used to assign a value to any variable. 
+ += , Add and assign.
+-= , Subtract and assign.
+*= , Multiply and assign.
+/= , Divide and assign.
+%= , Modulo and assign.
+
+Relational Operators
+Relational Operators are used to check for relations like equality, greater than, and less than. 
+
+Relational operators compare values and return Boolean results:
+
+== , Equal to.
+!= , Not equal to.
+< , Less than.
+<= , Less than or equal to.
+> , Greater than.
+>= , Greater than or equal to.
+
+
+Logical Operators
+Logical Operators are used to perform “logical AND” and “logical OR” operations, similar to AND gate and OR gate in digital electronic
+
+&&, Logical AND: returns true when both conditions are true.
+||, Logical OR: returns true if at least one condition is true.
+!, Logical NOT: returns true when a condition is false and vice-versa
+
+public class OperatorExample {
+    public static void main(String[] args) {
+        int a = 10, b = 3;
+
+        // Arithmetic
+        System.out.println("a + b = " + (a + b));
+        System.out.println("a - b = " + (a - b));
+        System.out.println("a * b = " + (a * b));
+        System.out.println("a / b = " + (a / b));
+        System.out.println("a % b = " + (a % b));
+
+        // Relational
+        System.out.println("a == b: " + (a == b));
+        System.out.println("a != b: " + (a != b));
+        System.out.println("a > b: " + (a > b));
+
+        // Logical
+        System.out.println("(a > 5 && b < 5): " + (a > 5 && b < 5));
+        System.out.println("(a > 15 || b < 5): " + (a > 15 || b < 5));
+        System.out.println("!(a == b): " + !(a == b));
+    }
+}
