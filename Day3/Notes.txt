@@ -1,0 +1,139 @@
+Today is the day3 of my continous of javba basic + advance mastery  where i learnt 
+
+INPUT and OUTPUT in java 
+for taking input in java need to use Scanner class
+.
+
+import java.util.Scanner;
+
+public class InputExample {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Enter your name: ");
+        String name = sc.nextLine();
+        
+        System.out.print("Enter your age: ");
+        int age = sc.nextInt();
+        
+        System.out.println("Hello " + name + ", you are " + age + " years old.");
+    }
+}
+
+
+
+ System.out.print() vs System.out.println()
+print() – stays on the same line.
+
+println() – moves to the next line.
+
+
+Type Casting
+Type casting is converting one data type into another.
+
+ Implicit (Widening) Casting
+Automatically done when converting smaller to larger data types.
+
+java
+Copy
+Edit
+int a = 10;
+double b = a;  // Implicit casting: int to double
+System.out.println(b);  // 10.0
+
+xplicit (Narrowing) Casting
+You do it manually, converting larger to smaller types.
+
+double x = 10.5;
+int y = (int) x;  // Explicit casting: double to int
+System.out.println(y);  // 10
+
+
+String Conversion
+🔹 Number to String
+
+
+int num = 100;
+String str = String.valueOf(num);  // or Integer.toString(num);
+🔹 String to Number
+
+
+String s = "123";
+int number = Integer.parseInt(s);
+double d = Double.parseDouble("45.67");
+
+
+
+Simple Calculator
+Take two numbers and an operator (+, -, *, /)
+
+Perform the operation
+
+Use Scanner, switch, and basic type casting if needed
+
+import java.util.Scanner;
+
+public class Calculator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter first number: ");
+        double num1 = sc.nextDouble();
+
+        System.out.print("Enter operator (+, -, *, /): ");
+        char operator = sc.next().charAt(0);
+
+        System.out.print("Enter second number: ");
+        double num2 = sc.nextDouble();
+
+        double result;
+        switch (operator) {
+            case '+': result = num1 + num2; break;
+            case '-': result = num1 - num2; break;
+            case '*': result = num1 * num2; break;
+            case '/': 
+                if (num2 != 0)
+                    result = num1 / num2;
+                else {
+                    System.out.println("Cannot divide by zero.");
+                    return;
+                }
+                break;
+            default: 
+                System.out.println("Invalid operator");
+                return;
+        }
+
+        System.out.println("Result: " + result);
+    }
+}
+
+
+
+ Age Calculator
+Ask for the current year and birth year
+
+Subtract and display age
+
+Also convert age to string and print
+
+
+import java.util.Scanner;
+
+public class AgeCalculator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter current year: ");
+        int currentYear = sc.nextInt();
+
+        System.out.print("Enter your birth year: ");
+        int birthYear = sc.nextInt();
+
+        int age = currentYear - birthYear;
+        String ageStr = String.valueOf(age);
+
+        System.out.println("Your age is: " + age);
+        System.out.println("Your age in string format: " + ageStr);
+    }
+}

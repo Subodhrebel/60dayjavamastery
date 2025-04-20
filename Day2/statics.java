@@ -1,3 +1,4 @@
+package Day2;
 class statics {
     public static String first = "Subodh kumar";
 
