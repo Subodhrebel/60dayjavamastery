@@ -1,0 +1,128 @@
+if (condition) {
+    // code to execute if condition is true
+}
+
+
+int age = 18;
+if (age >= 18) {
+    System.out.println("Eligible to vote");
+}
+
+
+if-else Statement
+if (condition) {
+    // true block
+} else {
+    // false block
+}
+
+
+int number = 5;
+if (number % 2 == 0) {
+    System.out.println("Even");
+} else {
+    System.out.println("Odd");
+}
+
+nested-if Statement
+
+if (condition1) {
+    if (condition2) {
+        // both true
+    }
+}
+
+
+int marks = 85;
+if (marks >= 60) {
+    if (marks >= 80) {
+        System.out.println("Distinction");
+    } else {
+        System.out.println("First Class");
+    }
+}
+
+
+ switch-case Statement
+
+ switch(expression) {
+    case value1:
+        // code
+        break;
+    case value2:
+        // code
+        break;
+    default:
+        // code
+}
+
+
+int day = 3;
+switch(day) {
+    case 1: System.out.println("Sunday"); break;
+    case 2: System.out.println("Monday"); break;
+    case 3: System.out.println("Tuesday"); break;
+    default: System.out.println("Invalid day");
+}
+
+
+
+
+Grading System using if-else
+
+import java.util.Scanner;
+
+public class GradeCalculator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter marks: ");
+        int marks = sc.nextInt();
+
+        if (marks >= 90) {
+            System.out.println("Grade: A");
+        } else if (marks >= 80) {
+            System.out.println("Grade: B");
+        } else if (marks >= 70) {
+            System.out.println("Grade: C");
+        } else if (marks >= 60) {
+            System.out.println("Grade: D");
+        } else {
+            System.out.println("Grade: F");
+        }
+    }
+}
+
+
+
+Day of the Week using switch
+
+import java.util.Scanner;
+
+public class DayOfWeek {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter day number (1-7): ");
+        int day = sc.nextInt();
+
+        switch(day) {
+            case 1: System.out.println("Sunday"); break;
+            case 2: System.out.println("Monday"); break;
+            case 3: System.out.println("Tuesday"); break;
+            case 4: System.out.println("Wednesday"); break;
+            case 5: System.out.println("Thursday"); break;
+            case 6: System.out.println("Friday"); break;
+            case 7: System.out.println("Saturday"); break;
+            default: System.out.println("Invalid day number");
+        }
+    }
+}
+
+
+ What are control statements in Java?
+Control statements decide the flow of execution based on conditions (like if, switch).
+
+Difference between if-else and switch-case?
+if-else: works with boolean expressions and ranges.
+
+switch: better for fixed, discrete values (like 1, 2, 3…).
+
