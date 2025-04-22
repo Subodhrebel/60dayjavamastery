@@ -1,0 +1,207 @@
+Types of Loops in Java
+for loop: Used when the number of iterations is known
+for (int i = 0; i < 5; i++) {
+    System.out.println(i);
+}
+
+
+while loop: Used when condition is checked before each iteration.
+
+int i = 0;
+while (i < 5) {
+    System.out.println(i);
+    i++;
+}
+
+
+do-while loop: Executes at least once before checking the condition..
+int i = 0;
+do {
+    System.out.println(i);
+    i++;
+} while (i < 5);
+
+
+ Control Statements
+break: Exits the loop immediately.
+
+for (int i = 1; i <= 10; i++) {
+    if (i == 5) break;
+    System.out.println(i);
+}
+
+
+
+
+public class Pattern {
+    public static void main(String[] args) {
+        int rows = 5;
+        for (int i = 1; i <= rows; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+
+
+import java.util.Scanner;
+
+public class SumOfNumbers {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int n = sc.nextInt();
+        int sum = 0;
+
+        for (int i = 1; i <= n; i++) {
+            sum += i;
+        }
+
+        System.out.println("Sum = " + sum);
+    }
+}
+
+
+
+
+
+package Day5;
+
+public class Pattern {
+    public static void main(String[] args) {
+        int rows = 5;
+        for (int i = 1; i <= rows; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+
+
+
+package Day5;
+
+public class InvertedTriangle {
+    public static void main(String[] args) {
+        int rows = 5;
+        for (int i = rows; i >= 1; i--) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+
+
+
+package Day5;
+
+public class NumberTriangle {
+    public static void main(String[] args) {
+        int rows = 4;
+        for (int i = 1; i <= rows; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(j + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+
+
+
+
+package Day5;
+
+public class HollowSquare {
+    public static void main(String[] args) {
+        int size = 5;
+        for (int i = 1; i <= size; i++) {
+            for (int j = 1; j <= size; j++) {
+                if (i == 1 || i == size || j == 1 || j == size) {
+                    System.out.print("* ");
+                } else {
+                    System.out.print("  ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+
+
+
+
+package Day5;
+
+public class RightAlignedTriangle {
+    public static void main(String[] args) {
+        int rows = 4;
+        for (int i = 1; i <= rows; i++) {
+            for (int j = rows; j > i; j--) {
+                System.out.print("  ");
+            }
+            for (int k = 1; k <= i; k++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+
+
+
+package Day5;
+
+public class NumberPyramid {
+    public static void main(String[] args) {
+        int rows = 4;
+        for (int i = 1; i <= rows; i++) {
+            for (int j = rows; j > i; j--) {
+                System.out.print(" ");
+            }
+            for (int k = 1; k <= i; k++) {
+                System.out.print(k + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+
+
+import java.util.Scanner;
+
+public class Factorial {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+
+        int n = sc.nextInt();
+        int fact = 1;
+
+        for (int i = 1; i <= n; i++) {
+            fact = fact * i;
+        }
+
+        System.out.println("Factorial of " + n + " is: " + fact);
+    }
+}
