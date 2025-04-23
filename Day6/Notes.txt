@@ -1,0 +1,82 @@
+What is an Array?
+An array is a collection of similar types of data stored in a contiguous memory location. In Java, arrays are objects that store multiple values of the same data type.
+
+int[] arr; // Preferred syntax
+
+arr = new int[5]; // Allocates memory for 5 integers
+
+arr[0] = 10;
+arr[1] = 20;
+// and so on...
+
+Find Maximum & Minimum in 1D Array
+public class OneDMaxMin {
+    public static void main(String[] args) {
+        int[] numbers = {25, 11, 7, 75, 56};
+
+        int max = numbers[0];
+        int min = numbers[0];
+
+        for (int i = 1; i < numbers.length; i++) {
+            if (numbers[i] > max) max = numbers[i];
+            if (numbers[i] < min) min = numbers[i];
+        }
+
+        System.out.println("Maximum: " + max);
+        System.out.println("Minimum: " + min);
+    }
+}
+
+
+2D Arrays in Java (Matrix)
+🔹 What is a 2D Array?
+A 2D array is an array of arrays. It's used to represent matrices or tables with rows and columns.
+
+Declaration
+
+int[][] matrix;
+
+Memory Allocation
+matrix = new int[2][3]; // 2 rows, 3 columns
+
+Traversal of 2D Array
+
+for (int i = 0; i < matrix.length; i++) {
+    for (int j = 0; j < matrix[i].length; j++) {
+        System.out.print(matrix[i][j] + " ");
+    }
+    System.out.println();
+}
+
+
+
+ Matrix Addition (2D Array)
+
+ public class MatrixAddition {
+    public static void main(String[] args) {
+        int[][] a = {
+            {1, 2, 3},
+            {4, 5, 6}
+        };
+        int[][] b = {
+            {6, 5, 4},
+            {3, 2, 1}
+        };
+
+        int[][] sum = new int[2][3];
+
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 3; j++) {
+                sum[i][j] = a[i][j] + b[i][j];
+            }
+        }
+
+        System.out.println("Matrix Addition Result:");
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(sum[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
