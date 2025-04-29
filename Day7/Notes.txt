@@ -1,0 +1,61 @@
+
+Theory: Classes & Objects (OOP Basics)
+
+OOP Principles (Core 4)
+1. Encapsulation – Hiding data using access modifiers and exposing only what’s necessary.
+2. Abstraction – Showing only essential features and hiding the background details.
+3. Inheritance – One class can inherit properties and methods from another.
+4. Polymorphism – Ability of a method to perform different tasks depending on the object calling it.
+
+Class
+- Blueprint of an object.
+- Contains variables (fields) and methods.
+
+Object
+- Instance of a class.
+- Allocated memory when created with `new`.
+
+Instance Variables
+- Declared inside a class but outside any method.
+- Each object has its own copy.
+Methods
+- Define behavior of the object.
+- Can access/modify instance variables.
+
+---
+
+Code Example: Student Class
+
+```java
+public class Student {
+    // Instance variables
+    String name;
+    int age;
+    String course;
+
+    // Method to display student details
+    void displayDetails() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Course: " + course);
+    }
+
+    public static void main(String[] args) {
+        // Creating objects
+        Student s1 = new Student();
+        s1.name = "Ravi";
+        s1.age = 20;
+        s1.course = "Computer Science";
+
+        Student s2 = new Student();
+        s2.name = "Neha";
+        s2.age = 21;
+        s2.course = "Information Technology";
+
+        // Displaying data
+        s1.displayDetails();
+        System.out.println("--------------------");
+        s2.displayDetails();
+    }
+}
+```
