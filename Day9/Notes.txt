@@ -1,0 +1,179 @@
+ Static Variables
+Shared among all objects of a class.
+
+Loaded only once during class loading.
+class Example {
+    static int count = 0; // static variable
+}
+
+
+
+Static Methods
+Belong to the class, not objects.
+
+Can be called without creating an object.
+
+Can access only static data directly.
+class Example {
+    static void display() {
+        System.out.println("Static method called");
+    }
+}
+
+
+
+Static Blocks
+Used for static initialization.
+
+Executes only once when the class is loaded (before main() or object creation).
+class Example {
+    static {
+        System.out.println("Static block executed");
+    }
+}
+
+
+
+Static Main Method
+Entry point of Java programs.
+
+JVM calls public static void main(String[] args).
+
+
+Counter Program using Static
+class Counter {
+    static int count = 0; // static variable
+
+    Counter() {
+        count++; // increment count
+        System.out.println("Object created. Count: " + count);
+    }
+
+    static void showCount() {
+        System.out.println("Total objects created: " + count);
+    }
+
+    static {
+        System.out.println("Static block: Class Counter loaded.");
+    }
+
+    public static void main(String[] args) {
+        Counter c1 = new Counter();
+        Counter c2 = new Counter();
+        Counter c3 = new Counter();
+        
+        Counter.showCount(); // calling static method
+    }
+}
+
+
+What is the purpose of the static keyword?
+Ans: It allows a member (variable/method/block) to belong to the class rather than instances.
+
+✅ Q2. Can static methods access non-static variables?
+Ans: No. Static methods can only access static variables directly.
+
+✅ Q3. When is the static block executed?
+Ans: When the class is loaded, before the main() method or any object creation.
+
+✅ Q4. Why is the main method static?
+Ans: So it can be called by the JVM without creating an object of the class.
+
+
+step-by-step explanation of how your `Counter` class code works:
+
+---
+
+## 🔍 **Code Breakdown**
+
+```java
+class Counter {
+    static int count = 0; // static variable
+```
+- **`static int count`**: This variable is **shared across all objects** of the class. It is loaded once when the class is first loaded into memory.
+
+---
+
+```java
+    static {
+        System.out.println("Static block: Class Counter loaded.");
+    }
+```
+- **Static Block**:
+  - Executes **once**, **when the class is loaded** by JVM (before any object creation or `main()` runs).
+  - Prints a message confirming the class has loaded.
+
+---
+
+```java
+    Counter() {
+        count++; // increment count
+        System.out.println("Object created. Count: " + count);
+    }
+```
+- **Constructor**:
+  - Runs every time a new `Counter` object is created.
+  - Increments `count` (shared variable) and prints the current count.
+
+---
+
+```java
+    static void showCount() {
+        System.out.println("Total objects created: " + count);
+    }
+```
+- **Static Method**:
+  - Belongs to the class.
+  - Can be called without any object (as done in `main()`).
+  - Displays the total number of `Counter` objects created.
+
+---
+
+```java
+    public static void main(String[] args) {
+        Counter c1 = new Counter();
+        Counter c2 = new Counter();
+        Counter c3 = new Counter();
+        
+        Counter.showCount(); // calling static method
+    }
+}
+```
+### 🔹 Execution Flow:
+
+1. **Class Loaded** → static block runs:
+   ```
+   Static block: Class Counter loaded.
+   ```
+
+2. **First Object (`c1`)** created → constructor runs:
+   ```
+   Object created. Count: 1
+   ```
+
+3. **Second Object (`c2`)** created → constructor runs:
+   ```
+   Object created. Count: 2
+   ```
+
+4. **Third Object (`c3`)** created → constructor runs:
+   ```
+   Object created. Count: 3
+   ```
+
+5. **Static method `showCount()`** called:
+   ```
+   Total objects created: 3
+   ```
+
+---
+
+### ✅ Final Output:
+```
+Static block: Class Counter loaded.
+Object created. Count: 1
+Object created. Count: 2
+Object created. Count: 3
+Total objects created: 3
+```
+
