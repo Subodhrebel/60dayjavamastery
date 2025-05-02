@@ -1,0 +1,296 @@
+Theory: Inheritance in Java
+
+Definition:
+Inheritance is a mechanism where one class acquires the properties (fields) and behaviors (methods) of another class. It promotes code reusability.
+
+ Types of Inheritance in Java
+
+1. Single Inheritance:
+   One class inherits from another.
+   `class A → class B`
+
+2. Multilevel Inheritance:
+   A class inherits from a class which is already a subclass.
+   `class A → class B → class C`
+
+3. Hierarchical Inheritance:
+   Multiple classes inherit from a single class.
+   `class A → class B, class C`
+
+> ⚠ Java does **not support multiple inheritance** through classes (to avoid ambiguity), but it is possible through interfaces.
+
+---
+
+ `super` Keyword
+
+ Refers to the immediate parent class.
+ Used to access parent class methods, constructors, and variables.
+
+```java
+super.methodName();      // Call parent method
+super.variableName;      // Access parent variable
+super();                 // Call parent constructor
+```
+ `this` Keyword
+
+ Refers to the current class instance.
+ Used to differentiate between class variables and parameters, or to call current class constructor.
+
+```java
+this.variable = variable;      // Resolve naming conflict
+this();                        // Call current class constructor
+```
+
+---
+
+ Constructor Chaining
+
+* Process of calling one constructor from another using `this()` or `super()`.
+* `this()` calls a constructor in the same class.
+* `super()` calls a constructor in the parent class.
+* Must be the first statement in the constructor.
+
+---
+
+Important Questions with Answers
+ What is inheritance in Java?
+Inheritance allows one class to inherit properties and methods of another class, promoting reusability.*
+
+ What are the different types of inheritance supported in Java?
+Single, Multilevel, Hierarchical (not Multiple through classes).
+
+ Why Java does not support multiple inheritance with classes?
+*To avoid ambiguity caused by the Diamond Problem.*
+
+ What is the difference between `this` and `super` keywords?
+*`this` refers to current class instance; `super` refers to parent class instance.*
+
+**Q5. What is constructor chaining?**
+*It’s the process of calling one constructor from another within the same class (`this()`) or parent class (`super()`).*
+
+---
+
+### 💻 Code: Employee → Manager → Developer (Multilevel Inheritance)
+
+```java
+// Base Class
+class Employee {
+    String name;
+    int empId;
+
+    Employee(String name, int empId) {
+        this.name = name;
+        this.empId = empId;
+        System.out.println("Employee constructor called.");
+    }
+
+    void displayInfo() {
+        System.out.println("Name: " + name + ", ID: " + empId);
+    }
+}
+
+// Subclass of Employee
+class Manager extends Employee {
+    String department;
+
+    Manager(String name, int empId, String department) {
+        super(name, empId); // calling parent class constructor
+        this.department = department;
+        System.out.println("Manager constructor called.");
+    }
+
+    void displayManager() {
+        System.out.println("Department: " + department);
+    }
+}
+
+// Subclass of Manager
+class Developer extends Manager {
+    String techStack;
+
+    Developer(String name, int empId, String department, String techStack) {
+        super(name, empId, department); // constructor chaining
+        this.techStack = techStack;
+        System.out.println("Developer constructor called.");
+    }
+
+    void displayDeveloper() {
+        displayInfo();       // from Employee
+        displayManager();    // from Manager
+        System.out.println("Tech Stack: " + techStack);
+    }
+}
+
+// Main class to test
+public class TestInheritance {
+    public static void main(String[] args) {
+        Developer dev = new Developer("Subodh", 101, "IT", "Java");
+        dev.displayDeveloper();
+    }
+}
+
+
+
+
+
+
+
+line-by-line explanation
+
+---
+
+### ✅ **Employee → Manager → Developer** Inheritance Example
+
+```java
+// Base Class
+class Employee {
+```
+
+👉 Declares a base class `Employee`. This class will be extended by `Manager`.
+
+```java
+    String name;
+    int empId;
+```
+
+👉 These are instance variables to store the employee's name and ID.
+
+```java
+    Employee(String name, int empId) {
+```
+
+👉 This is a **parameterized constructor** of the `Employee` class.
+
+```java
+        this.name = name;
+        this.empId = empId;
+```
+
+👉 Uses `this` keyword to refer to the current object’s fields. Sets the values passed in the constructor.
+
+```java
+        System.out.println("Employee constructor called.");
+```
+
+👉 Prints a message when the Employee constructor is executed.
+
+```java
+    }
+
+    void displayInfo() {
+        System.out.println("Name: " + name + ", ID: " + empId);
+    }
+```
+
+👉 Method to display the employee’s name and ID.
+
+---
+
+```java
+// Subclass of Employee
+class Manager extends Employee {
+```
+
+👉 Declares `Manager` as a subclass of `Employee` using `extends`.
+
+```java
+    String department;
+```
+
+👉 New property specific to Manager class.
+
+```java
+    Manager(String name, int empId, String department) {
+        super(name, empId); // calling parent class constructor
+```
+
+👉 Constructor of Manager.
+👉 `super(name, empId)` calls the **Employee constructor** to initialize name and empId.
+
+```java
+        this.department = department;
+        System.out.println("Manager constructor called.");
+    }
+```
+
+👉 Assigns department and prints message.
+
+```java
+    void displayManager() {
+        System.out.println("Department: " + department);
+    }
+```
+
+👉 Displays manager's department.
+
+---
+
+```java
+// Subclass of Manager
+class Developer extends Manager {
+```
+
+👉 `Developer` inherits from `Manager`, so it also gets access to `Employee`.
+
+```java
+    String techStack;
+```
+
+👉 New field specific to Developer.
+
+```java
+    Developer(String name, int empId, String department, String techStack) {
+        super(name, empId, department); // constructor chaining
+```
+
+👉 Constructor of Developer.
+👉 `super(...)` calls **Manager’s constructor**, which also calls **Employee’s constructor** — **multilevel constructor chaining**.
+
+```java
+        this.techStack = techStack;
+        System.out.println("Developer constructor called.");
+    }
+```
+
+👉 Initializes techStack and prints a message.
+
+```java
+    void displayDeveloper() {
+        displayInfo();       // from Employee
+        displayManager();    // from Manager
+        System.out.println("Tech Stack: " + techStack);
+    }
+```
+
+👉 Calls methods from parent classes and displays all info.
+
+---
+
+```java
+// Main class to test
+public class TestInheritance {
+    public static void main(String[] args) {
+```
+
+👉 Entry point of the program.
+
+```java
+        Developer dev = new Developer("Subodh", 101, "IT", "Java");
+```
+
+👉 Creates an object of `Developer`, which calls constructors of all parent classes (constructor chaining).
+
+```java
+        dev.displayDeveloper();
+```
+
+👉 Calls method to display full details.
+
+```java
+    }
+}
+```
+
+👉 End of main method and class.
+
+
