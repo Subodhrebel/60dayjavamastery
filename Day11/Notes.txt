@@ -1,0 +1,129 @@
+Theory: Method Overriding & Polymorphism
+
+Method Overriding
+
+ Method Overriding occurs when a subclass provides a specific implementation of a method that is already defined in its parent class.
+ The method in the child class must have:
+
+   Same name
+   Same parameters
+   Same return type (or subtype - covariant return)
+Used to achieve **runtime polymorphism
+ Marked with `@Override` annotation (optional but recommended).
+
+Syntax:
+
+```java
+class Parent {
+    void show() {
+        System.out.println("Parent");
+    }
+}
+
+class Child extends Parent {
+    @Override
+    void show() {
+        System.out.println("Child");
+    }
+}
+```
+
+@Override Annotation
+
+ Indicates that a method is being overridden from the parent class.
+ Helps catch errors at compile-time if method signatures mismatch.
+
+Polymorphism
+
+* **Compile-time polymorphism** = Method Overloading
+* **Runtime polymorphism** = Method Overriding + Dynamic Method Dispatch
+
+### 🔹 **Dynamic Method Dispatch**
+
+* The mechanism by which a call to an overridden method is resolved at **runtime**, not compile time.
+* Requires **upcasting**:
+
+  ```java
+  Parent p = new Child();
+  p.show();  // Child's show() is called at runtime
+  ```
+
+---
+
+## ✅ **Q\&A: Method Overriding & Polymorphism**
+
+1. **Q:** What is method overriding?
+   **A:** When a subclass provides its own implementation for a method declared in the parent class.
+
+2. **Q:** Why is `@Override` used?
+   **A:** To tell the compiler that you're overriding a method, and to catch errors if the method signature is incorrect.
+
+3. **Q:** What is dynamic method dispatch?
+   **A:** The process where the call to an overridden method is resolved at runtime based on the object type.
+
+4. **Q:** What are the rules of overriding?
+   **A:**
+
+   * Same method name
+   * Same parameters
+   * Same return type (or subclass)
+   * Access modifier in child should not be more restrictive
+
+5. **Q:** Can static methods be overridden?
+   **A:** No, static methods are class-level and are hidden, not overridden.
+
+6. **Q:** What is the difference between overloading and overriding?
+   **A:**
+
+   * **Overloading**: same method name, different parameters (compile-time)
+   * **Overriding**: same method, same parameters, child class (runtime)
+
+---
+
+## ✅ **Code Example: Shape with Overriding**
+
+```java
+// Parent Class
+class Shape {
+    void area() {
+        System.out.println("Area of shape");
+    }
+}
+
+// Subclass 1
+class Rectangle extends Shape {
+    @Override
+    void area() {
+        System.out.println("Area of Rectangle = length * breadth");
+    }
+}
+
+// Subclass 2
+class Circle extends Shape {
+    @Override
+    void area() {
+        System.out.println("Area of Circle = π * radius * radius");
+    }
+}
+
+// Test Class
+public class TestPolymorphism {
+    public static void main(String[] args) {
+        Shape s;  // reference of parent class
+
+        s = new Rectangle();  // object of Rectangle
+        s.area();  // Runtime Polymorphism
+
+        s = new Circle();  // object of Circle
+        s.area();  // Runtime Polymorphism
+    }
+}
+```
+
+### ✅ Output:
+
+```
+Area of Rectangle = length * breadth
+Area of Circle = π * radius * radius
+```
+
