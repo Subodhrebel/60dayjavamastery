@@ -1,0 +1,174 @@
+Abstraction (Abstract Class & Interface)
+
+Abstraction
+
+ Abstraction hides implementation details and shows only essential features.
+Achieved using:
+
+  Abstract Classes
+  Interfaces
+
+---
+
+Abstract Class
+
+Can have abstract (no body) and concrete (with body) methods.
+Used when there is a base class with common functionality and subclasses with specific implementations.
+
+Syntax:
+
+```java
+abstract class Animal {
+    abstract void sound();
+    void breathe() {
+        System.out.println("Breathing...");
+    }
+}
+```
+
+---
+
+Interface
+
+ A blueprint of a class with only **abstract methods** (by default) and **static/final variables**.
+From Java 8, interfaces can also have:
+
+  default methods (with body)
+  static methods
+
+Syntax:
+
+```java
+interface Vehicle {
+    void start();
+    default void honk() {
+        System.out.println("Default Honk");
+    }
+    static void maintenance() {
+        System.out.println("General Maintenance");
+    }
+}
+```
+
+---
+
+Multiple Inheritance with Interface**
+
+* Java does **not support multiple inheritance with classes**.
+* But you can **implement multiple interfaces** to achieve multiple inheritance.
+
+```java
+interface A {
+    void methodA();
+}
+interface B {
+    void methodB();
+}
+class C implements A, B {
+    public void methodA() { System.out.println("A"); }
+    public void methodB() { System.out.println("B"); }
+}
+```
+
+---
+
+### 💻 **Code Implementation**
+
+#### Interface: `Vehicle`, Classes: `Car`, `Bike`
+
+```java
+// Vehicle Interface
+interface Vehicle {
+    void start();
+    void stop();
+    default void honk() {
+        System.out.println("Honking from Vehicle");
+    }
+    static void maintenance() {
+        System.out.println("Vehicle maintenance check");
+    }
+}
+
+// Car Class
+class Car implements Vehicle {
+    public void start() {
+        System.out.println("Car started");
+    }
+    public void stop() {
+        System.out.println("Car stopped");
+    }
+}
+
+// Bike Class
+class Bike implements Vehicle {
+    public void start() {
+        System.out.println("Bike started");
+    }
+    public void stop() {
+        System.out.println("Bike stopped");
+    }
+    @Override
+    public void honk() {
+        System.out.println("Bike custom honk");
+    }
+}
+
+// Main class to test
+public class AbstractionDemo {
+    public static void main(String[] args) {
+        Vehicle car = new Car();
+        car.start();
+        car.honk();
+        car.stop();
+
+        Vehicle bike = new Bike();
+        bike.start();
+        bike.honk();
+        bike.stop();
+
+        Vehicle.maintenance(); // Static method from interface
+    }
+}
+```
+
+---
+
+
+
+
+1. What is abstraction in Java? How is it achieved?
+Answer:
+Abstraction is a concept where only essential details are shown while hiding the implementation.
+It is achieved in Java using:
+
+Abstract Classes
+
+Interfaces
+
+2. Can we create an object of an abstract class? Why?
+Answer:
+No, we cannot create an object of an abstract class because it may have unimplemented (abstract) methods. However, we can create a reference of the abstract class type and instantiate its concrete subclass.
+
+3. Difference between abstract class and interface?
+
+Feature	Abstract Class	Interface
+Methods	Can have abstract and concrete	Only abstract (Java 7); default & static (Java 8+)
+Variables	Can have instance variables	Only public static final variables
+Constructor	Can have constructors	Cannot have constructors
+Inheritance	Single inheritance	Multiple interface inheritance
+Keyword	abstract	interface
+
+4. Why does Java support multiple inheritance via interfaces only?
+Answer:
+Java avoids multiple inheritance with classes to prevent diamond problem (ambiguity).
+Interfaces only contain method declarations (no state), so implementing multiple interfaces doesn’t cause conflicts, allowing multiple inheritance.
+
+5. What are default and static methods in interfaces?
+Answer:
+From Java 8:
+
+Default methods allow interfaces to provide a method body.
+Used to add new methods to interfaces without breaking existing implementation.
+
+Static methods are utility methods related to the interface and can be called using the interface name.
+
