@@ -1,0 +1,166 @@
+
+
+Theory: Exception Handling in Java
+
+ What is Exception Handling?
+
+Exception handling is a mechanism to handle runtime errors (exceptions) so the normal flow of the application can be maintained.
+
+---
+
+ Keywords
+
+ `try`
+
+ Used to enclose code that might throw an exception.
+
+```java
+try {
+   // risky code
+}
+```
+
+#### 2. `catch`
+
+* Used to handle the exception.
+
+```java
+catch (ExceptionType e) {
+   // handle exception
+}
+```
+
+#### 3. `finally`
+
+* Always executes whether an exception occurs or not.
+
+```java
+finally {
+   // cleanup code
+}
+```
+
+#### 4. `throw`
+
+* Used to throw an exception manually.
+
+```java
+throw new ArithmeticException("Error occurred");
+```
+
+#### 5. `throws`
+
+* Declares exceptions a method might throw.
+
+```java
+public void method() throws IOException {
+   // code
+}
+```
+
+---
+
+## ❓ **Questions & Answers**
+
+### Q1. What is an exception in Java?
+
+**A:** An exception is an event that disrupts the normal flow of the program during runtime.
+
+### Q2. What is the difference between `throw` and `throws`?
+
+* **throw** is used to **manually throw** an exception.
+* **throws** is used to **declare** an exception.
+
+### Q3. What happens if you don’t handle an exception?
+
+**A:** The program will terminate abnormally and print a stack trace.
+
+### Q4. What is the use of the `finally` block?
+
+**A:** It is used to execute important code such as closing resources, regardless of the exception.
+
+### Q5. Can we have multiple catch blocks?
+
+**A:** Yes. They are used to handle different types of exceptions.
+
+---
+
+## 💻 **Code Examples**
+
+### ✅ 1. **Handling Divide by Zero (ArithmeticException)**
+
+```java
+public class DivideByZero {
+    public static void main(String[] args) {
+        try {
+            int a = 10, b = 0;
+            int result = a / b;
+            System.out.println("Result: " + result);
+        } catch (ArithmeticException e) {
+            System.out.println("Caught Exception: " + e.getMessage());
+        } finally {
+            System.out.println("Execution completed.");
+        }
+    }
+}
+```
+
+---
+
+### ✅ 2. **Custom Exception Example**
+
+```java
+// Step 1: Create custom exception
+class AgeException extends Exception {
+    public AgeException(String message) {
+        super(message);
+    }
+}
+
+// Step 2: Use the custom exception
+public class CustomExceptionDemo {
+    public static void checkAge(int age) throws AgeException {
+        if (age < 18) {
+            throw new AgeException("You must be at least 18 years old.");
+        } else {
+            System.out.println("Access granted.");
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            checkAge(16);
+        } catch (AgeException e) {
+            System.out.println("Caught Exception: " + e.getMessage());
+        } finally {
+            System.out.println("Age check done.");
+        }
+    }
+}
+```
+
+---
+
+### ✅ 3. **Multiple Catch Blocks Example**
+
+```java
+public class MultipleCatchExample {
+    public static void main(String[] args) {
+        try {
+            int[] arr = {1, 2, 3};
+            int x = arr[5]; // ArrayIndexOutOfBounds
+            int y = 10 / 0; // ArithmeticException
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Array Error: " + e);
+        } catch (ArithmeticException e) {
+            System.out.println("Math Error: " + e);
+        } finally {
+            System.out.println("Multiple catch blocks tested.");
+        }
+    }
+}
+```
+
+---
+
+
