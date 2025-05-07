@@ -1,0 +1,109 @@
+
+
+ Checked vs Unchecked Exceptions
+ Multi-catch Block
+ Custom (User-defined) Exceptions
+ Code: Age validation using user-defined exception
+
+---
+
+THEORY
+
+Checked vs Unchecked Exceptions
+| Checked Exception                                          | Unchecked Exception                                     |
+| ---------------------------------------------------------- | ------------------------------------------------------- |
+| Checked at compile time                                    | Checked at runtime                                      |
+| Must be handled using try-catch or declared using `throws` | Optional to handle                                      |
+| Subclasses of `Exception` (but not `RuntimeException`)     | Subclasses of `RuntimeException`                        |
+| Examples: `IOException`, `SQLException`                    | Examples: `NullPointerException`, `ArithmeticException` |
+
+---
+
+Multi-catch Block 
+
+ Allows catching multiple exceptions in a single `catch` block using `|` (pipe symbol).
+
+```java
+try {
+    // code that might throw IOException or SQLException
+} catch (IOException | SQLException e) {
+    System.out.println("Exception occurred: " + e);
+}
+```
+
+---
+
+Custom/User-defined Exceptions
+
+* Create your own exception by extending the `Exception` or `RuntimeException` class.
+
+```java
+class MyException extends Exception {
+    public MyException(String message) {
+        super(message);
+    }
+}
+```
+
+---
+
+ INTERVIEW Q\&A
+
+ Q1: What is the difference between checked and unchecked exceptions?
+
+ Checked exceptions must be handled during compilation, while unchecked exceptions occur at runtime and are optional to handle.
+
+### Q2: Why use multi-catch blocks?
+
+**A:** To simplify code and reduce redundancy when handling multiple exceptions with the same logic.
+
+### Q3: How to create a custom exception?
+
+**A:** Extend `Exception` (checked) or `RuntimeException` (unchecked) and define a constructor to pass a message.
+
+### Q4: Can we catch multiple exceptions in a single block?
+
+**A:** Yes, using the multi-catch block feature introduced in Java 7.
+
+### Q5: When should we use custom exceptions?
+
+**A:** To represent application-specific errors more clearly, e.g., age validation, insufficient balance, etc.
+
+---
+
+## 💻 CODE: Age Validation using Custom Exception
+
+```java
+// Custom exception class
+class InvalidAgeException extends Exception {
+    public InvalidAgeException(String message) {
+        super(message);
+    }
+}
+
+// Main class
+public class AgeValidator {
+    // Method to check age
+    public static void validateAge(int age) throws InvalidAgeException {
+        if (age < 18) {
+            throw new InvalidAgeException("Age must be 18 or above.");
+        } else {
+            System.out.println("Age is valid. Access granted.");
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            int userAge = 16; // You can change this for testing
+            validateAge(userAge);
+        } catch (InvalidAgeException e) {
+            System.out.println("Exception caught: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Other exception: " + e);
+        } finally {
+            System.out.println("Validation process completed.");
+        }
+    }
+}
+```
+
