@@ -1,0 +1,166 @@
+Theory: Wrapper Classes & Autoboxing/Unboxing**
+
+What are Wrapper Classes?
+
+* Java is **object-oriented**, but **primitive types (int, char, etc.)** are not objects.
+* **Wrapper classes** allow primitives to be used as objects.
+
+| Primitive | Wrapper Class |
+| --------- | ------------- |
+| byte      | Byte          |
+| short     | Short         |
+| int       | Integer       |
+| long      | Long          |
+| float     | Float         |
+| double    | Double        |
+| char      | Character     |
+| boolean   | Boolean       |
+
+### 🔹 Why Wrapper Classes?
+
+* Used in **collections** (like ArrayList), which **require objects**, not primitives.
+* Helpful for **utility methods** (`Integer.parseInt()`, etc.)
+* Enables **null values** (primitive can’t be null).
+
+---
+
+### 🔹 What is Autoboxing?
+
+* Automatic **conversion of primitive to wrapper object**.
+
+```java
+int x = 10;
+Integer obj = x;  // Autoboxing
+```
+
+### 🔹 What is Unboxing?
+
+* Automatic **conversion of wrapper object to primitive**.
+
+```java
+Integer obj = 20;
+int y = obj;  // Unboxing
+```
+
+---
+
+## ✅ **Java Interview Questions with Answers**
+
+### 1. **What are wrapper classes in Java?**
+
+Wrapper classes are used to convert primitive data types into objects. Java provides a wrapper class for each primitive type.
+
+---
+
+### 2. **Why do we need wrapper classes?**
+
+They are necessary for working with collections like `ArrayList`, using utility methods, and storing primitives as objects (e.g., to allow nulls).
+
+---
+
+### 3. **What is autoboxing?**
+
+It is the automatic conversion of primitive data types into their corresponding wrapper class objects by the compiler.
+
+---
+
+### 4. **What is unboxing?**
+
+Unboxing is the reverse process of autoboxing — converting wrapper class objects back to primitives.
+
+---
+
+### 5. **Give a real-world example where autoboxing/unboxing is useful.**
+
+When adding `int` values to an `ArrayList<Integer>` — autoboxing is used automatically:
+
+```java
+ArrayList<Integer> list = new ArrayList<>();
+list.add(10);  // autoboxing
+```
+
+---
+
+### 6. **Is it possible to compare wrapper class objects using `==`?**
+
+`==` compares **references**, not values. Use `.equals()` to compare values.
+
+---
+
+## ✅ **Code Examples**
+
+### 🔸 **Example 1: Convert int to Integer (Autoboxing)**
+
+```java
+public class AutoboxingExample {
+    public static void main(String[] args) {
+        int num = 50;
+        Integer obj = num;  // Autoboxing
+        System.out.println("Primitive: " + num);
+        System.out.println("Wrapped: " + obj);
+    }
+}
+```
+
+---
+
+### 🔸 **Example 2: Convert Integer to int (Unboxing)**
+
+```java
+public class UnboxingExample {
+    public static void main(String[] args) {
+        Integer obj = new Integer(100);
+        int num = obj;  // Unboxing
+        System.out.println("Wrapped: " + obj);
+        System.out.println("Primitive: " + num);
+    }
+}
+```
+
+---
+
+### 🔸 **Example 3: Using Wrapper Class Methods**
+
+```java
+public class WrapperMethods {
+    public static void main(String[] args) {
+        String str = "123";
+        int num = Integer.parseInt(str);  // String to int
+        System.out.println("Parsed int: " + num);
+        
+        int x = 45;
+        String s = Integer.toString(x);  // int to String
+        System.out.println("Converted to String: " + s);
+    }
+}
+```
+
+---
+
+### 🔸 **Example 4: Wrapper Classes with Collections**
+
+```java
+import java.util.ArrayList;
+
+public class WrapperWithList {
+    public static void main(String[] args) {
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(10);   // Autoboxing
+        list.add(20);   // Autoboxing
+        
+        int a = list.get(0);  // Unboxing
+        System.out.println("Value from list: " + a);
+    }
+}
+```
+
+---
+
+## ✅ Summary Points
+
+* Wrapper classes bridge **primitives ↔ objects**.
+* **Autoboxing** = primitive → object.
+* **Unboxing** = object → primitive.
+* Common in **collections, utility classes**, and **generics**.
+* Use `.equals()` to compare wrapper objects safely.
+
