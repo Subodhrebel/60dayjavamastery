@@ -1,7 +1,7 @@
 
 ---
 
-# 60 Day Java Mastery Challenge
+#  Java Mastery Challenge
 
 ## Overview
 
